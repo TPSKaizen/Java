@@ -51,6 +51,8 @@ public class ExampleOfOperators {
 			// >= greater than or equal to
 			// < less than 
 			// <= less than or equal to
+			// && conditional AND
+			// || conditional OR 
 		
 		//Bitwise
 	}
