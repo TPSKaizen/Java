@@ -29,10 +29,9 @@ public class HashSetImplementation {
 		System.out.println("List contains 'A' : " + hSet.contains("A"));
 		
 		//remove removes an item
-		
+		hSet.remove("C");
 		System.out.println(hSet);
 		
-		hSet.remove("C");
 		
 		for(String item : hSet) {
 			System.out.println(item);

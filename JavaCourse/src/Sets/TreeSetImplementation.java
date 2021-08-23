@@ -26,6 +26,19 @@ public class TreeSetImplementation {
 		tSet.add("C");
 		tSet.add("C");
 		
+		//Checking if exists
+		Boolean found = tSet.contains("C");
+		System.out.println(found);
+		
+		//Traversal
+		for(String item : tSet) {
+			System.out.println("Value : " + item);
+		}
+		
+		//Deletion
+		tSet.remove("B");
+		
+		//tSet.clear() empties the set
 		System.out.println(tSet);
 		// Will print A B C, the natural order is preserved
 		
