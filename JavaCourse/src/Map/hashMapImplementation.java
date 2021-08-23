@@ -12,9 +12,16 @@ public class hashMapImplementation {
 		//Key = String, Value = Integer
 		Map<String, Integer> hMap = new HashMap<String, Integer>();
 		
+		//Inserting
 		hMap.put("a", 10);
 		hMap.put("b", 20);
 		hMap.put("c", 30);
+		
+		// Removing the existing key mapping
+		Integer returned_value = (Integer)hMap.remove("b");
+		
+		 // Verifying the returned value
+	    System.out.println("Returned value is: "+ returned_value);
 		
 		System.out.println("Size of map is: - " + hMap.size());
 		System.out.println(hMap);
@@ -31,7 +38,7 @@ public class hashMapImplementation {
 			System.out.println("key: " + key + ", value: " + hMap.get(key)); 
 		}
 		
-		//if we know both the key and value and we just want to iterate over it
+		//if we know both the key and value and we just want to iterate over every entry
 		for(Entry<String, Integer> entry : hMap.entrySet()) {
 			System.out.println("key " + entry.getKey() + ", value: " + entry.getValue());
 		}

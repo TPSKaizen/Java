@@ -32,6 +32,8 @@ public class HashSetImplementation {
 		
 		System.out.println(hSet);
 		
+		hSet.remove("C");
+		
 		for(String item : hSet) {
 			System.out.println(item);
 		}
