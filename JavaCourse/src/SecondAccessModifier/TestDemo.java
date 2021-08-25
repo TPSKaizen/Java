@@ -8,7 +8,7 @@ public class TestDemo {
 		// TODO Auto-generated method stub
 		
 		Test t2 = new Test();
-		t2.display();
+		//t2.display();
 	}
 
 }
