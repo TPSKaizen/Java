@@ -41,18 +41,41 @@ public class StreamsMaps {
 		
 		System.out.println(squareSet);
 		
-		//Filtering logic
+		//Filtering/ conditional logic
 		
 		List<String> langs = new ArrayList<>();
 		
+		langs.add("ziara");
 		langs.add("java");
 		langs.add("python");
 		langs.add("scala");
+		langs.add("Anthon");
 		
 		//filtering to only contain strings that start with p
 		List<String> filteredList = langs.stream().filter(x ->x.startsWith("p")).collect(Collectors.toList());
 		
 		System.out.println(filteredList);
+		
+		//Stream API for sorting and iterating
+		
+		//E.g Natural sorting order
+		
+		List<String> sortedList = langs.stream().sorted().collect(Collectors.toList());
+		
+	
+		
+		//Iterating over collection with enhanced for loop
+		for(String i : sortedList)
+			System.out.println(i);
+		
+		//Iterating over collection with streams
+		langs.stream().forEach(i -> System.out.println("Element is : " + i));
+		
+		//Iterating over collection with streams and applying multiple lines of logic
+		langs.stream().forEach(i -> {
+			i+= " is a language";
+			System.out.println("Element is : " + i);
+		});
 	}
 
 }
