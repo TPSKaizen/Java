@@ -62,8 +62,6 @@ public class StreamsMaps {
 		
 		List<String> sortedList = langs.stream().sorted().collect(Collectors.toList());
 		
-	
-		
 		//Iterating over collection with enhanced for loop
 		for(String i : sortedList)
 			System.out.println(i);
@@ -76,6 +74,28 @@ public class StreamsMaps {
 			i+= " is a language";
 			System.out.println("Element is : " + i);
 		});
+		
+		//Stream API Reduce
+		//demonstration
+		/*
+		 * Identity - An element that is the initial value of the reduction operation
+		 * and the default result if the stream is empty
+		 * 
+		 * Accumulator - a function that takes two parameters:
+		 * a partial result of the reduction operation and the next element of the stream
+		 * 
+		 * Combiner - a function used to combine the result of the reduction operation
+		 * when the reduction is parallelized or when there is a mismatch between the types
+		 * of the accumulator arguments and the types of the accumulator implementation
+		 * 
+		 * Combiner is used when you have elements of different data types. 
+		 */
+		
+		int sum = numList.stream().reduce(0, (acc,i)-> acc+i);
+		
+		String sentence = langs.stream().reduce(null, (acc,i) -> acc + " " + i);
+		System.out.println(sum);
+		System.out.println(sentence);
 	}
 
 }
