@@ -28,6 +28,10 @@ public class MountainBike implements Bicycle{
 			this.speed += increment;
 		}
 		
+		public void lol() {
+			System.out.println("Jeloo");
+		}
+		
 		public int getSeatHeight() {
 			return seatHeight;
 		}
@@ -62,6 +66,7 @@ public class MountainBike implements Bicycle{
 		System.out.println(mb1.getSpeed());
 		mb1.applyBrake(11);
 		System.out.println(mb1.getSpeed());
+	
 	}
 	
 
