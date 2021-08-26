@@ -15,7 +15,7 @@ public class abstractionImplementation {
 		 *  To the user, we show the ability to push the pedal
 		 *  but we don't show all the intricacies
 		 *  
-		 *   Abstract Classes cannot be instanstiated, but they can be subclassed
+		 *   Abstract Classes cannot be instantiated, but they can be subclassed
 		 *   So we cannot call its constructor, but we can extend it and make a child class
 		 *   
 		 *   Abstract methods can only be declared but not implemented
