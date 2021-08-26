@@ -20,4 +20,24 @@ public class OuterClass {
 		
 		
 	}
+	
+	class nonStaticInnerClass{
+		public void display() {
+			System.out.println("Hello world! Im not static!");
+			System.out.println("Static member of outer class: " + outerStaticMember);
+			System.out.println("Private static member of outer class = " + outerPrivateMember);
+		}
+	}
+	
+	void outerClassMethod() {
+		System.out.println("In the outer class method");
+		
+		class MethodLocalClass{
+			void localInnerMethod() {
+				System.out.println("in the method local class: Method");
+			}
+		}
+		MethodLocalClass mlc = new MethodLocalClass();
+		mlc.localInnerMethod();
+	}
 }
