@@ -6,11 +6,14 @@ public class mainExecution {
 		// TODO Auto-generated method stub
 			
 		Student john = new Student("John", 1 , "Hammy");
-		Student john2 = new Student("John", 2 , "Hammy");
+		Student john2 = new Student("John", 1 , "Hammy");
 		Student john3 = new Student("John", 3 , "Hammy");
 		
-		//This will return false because they are different
-		//memory locations
+		/*
+		 * With the default equals method, this will return false
+		 * with the custom implemented equals method, it will return true
+		 * because we are basing it on rollNumber
+		 */
 		System.out.println(john.equals(john2));
 	}
 

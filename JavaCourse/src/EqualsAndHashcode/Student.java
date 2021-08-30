@@ -37,4 +37,23 @@ public class Student {
 		return this.address;
 	}	
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) //comparing foreign object with object of the class
+			return true; //We are asking "Are these two references pointing to the same obj?
+		
+		//if the above doesnt hold true : 
+		if (obj == null || obj.getClass() != this.getClass()) 
+			return false;	//getClass returns the class type
+							//So we are checking if they are of the same class type and checking for null
+							//if either of these are true, then we have to return false cause the objs wouldnt be matching
+		
+		//Explicit casting
+		Student student = (Student) obj;
+		 
+		//Defining custom business logic below
+		// IN this example, we are identifying by rollNumber
+		return (student.rollNumber == this.rollNumber);
+	}
+	
 }
