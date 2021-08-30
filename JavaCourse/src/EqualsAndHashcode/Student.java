@@ -61,4 +61,14 @@ public class Student {
 		return this.rollNumber;
 	}
 	
+	/*
+	@Override
+	public int hashCode() {
+		return 1;
+	}	//If you use this implementation, all the objects
+		// will be stored at a single memory location
+		// and hence when we are fetching, it will point to a single mem location
+		// and equals will find the right obj we are trying to fetch
+		*/
+	
 }
