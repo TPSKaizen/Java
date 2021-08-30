@@ -56,4 +56,9 @@ public class Student {
 		return (student.rollNumber == this.rollNumber);
 	}
 	
+	@Override
+	public int hashCode() {
+		return this.rollNumber;
+	}
+	
 }
