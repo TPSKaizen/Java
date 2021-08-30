@@ -12,10 +12,10 @@ public class comparableDemo {
 		
 		ArrayList<Student> list = new ArrayList<Student>();
 		
-		Student john = new Student ("John", 3, "Barbados");
-		Student jamie = new Student ("Jamie", 2, "Barbados");
-		Student jacklyn = new Student ("Jacklyn", 4, "Barbados");
-		Student josh = new Student ("Josh", 1, "Barbados");
+		Student john = new Student ("John", 3, 22, "Barbados");
+		Student jamie = new Student ("Jamie", 2, 19, "Barbados");
+		Student jacklyn = new Student ("Jacklyn", 4, 24, "Barbados");
+		Student josh = new Student ("Josh", 1, 18, "Barbados");
 		
 		list.add(john);
 		list.add(jamie);
@@ -26,6 +26,10 @@ public class comparableDemo {
 		Collections.sort(list);
 		
 		//forEach from stream API
+		list.forEach(student -> System.out.println(student.getName()));
+		
+		Collections.sort(list, new ageComparator());
+		System.out.println("Students after age ascending sorting: ");
 		list.forEach(student -> System.out.println(student.getName()));
 	}
 

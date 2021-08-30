@@ -4,12 +4,14 @@ public class Student implements Comparable<Student> {
 	
 	private String name;
 	private int rollNumber;
+	private int age;
 	private String address;
 	
-	public Student(String name, int rollNumber, String address) {
+	public Student(String name, int rollNumber, int age, String address) {
 		this.name = name;
 		this.rollNumber = rollNumber;
 		this.address = address;
+		this.age = age;
 	}
 	
 	public void setName(String name) {
@@ -17,9 +19,13 @@ public class Student implements Comparable<Student> {
 	}
 	
 	public void setAge(int rollNumber) {
-		this.rollNumber = rollNumber;
+		this.age = age;
 	}
-
+	
+	public void setRollNumber(int rollNumber) {
+		this.rollNumber = rollNumber;
+	}  
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -27,6 +33,10 @@ public class Student implements Comparable<Student> {
 	//GET functions allow for us to access private variable values but not modify them
 	public String getName() {
 		return this.name;
+	}
+	
+	public int getAge() {
+		return this.age;
 	}
 	
 	public int getRollNumber() {
