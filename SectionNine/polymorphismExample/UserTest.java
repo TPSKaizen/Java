@@ -36,7 +36,9 @@ public class UserTest {
 		editor.saveWebLink(); // Will execute from User since no implementation exists in either Editor or
 								// Staff
 
+		editor.printUserType();
+
 		// OBJECT CASTING
-		ut.approveReview(new Editor());
+		// ut.approveReview(new Editor());
 	}
 }

@@ -41,11 +41,17 @@ public class UserTest {
 
 		// Method binding demo
 		User staff = new Staff();
-		// staff.staticMethod(); // part 1
+		staff.staticMethod(); // part 1
 		// staff.postAReview("");
 		// staff.instanceMethod(10); // part 2
+		/*
+		 * the above instance method is NOT being overriden. When you have similar
+		 * method names for instance methods but they are not being overriden, the
+		 * compiler will start at the super class and look downwards for a compatiable
+		 * method.
+		 */
 		// staff.instanceMethod(new Staff());
 
-		((Staff) staff).staticMethod();
+		// ((Staff) staff).staticMethod();
 	}
 }
