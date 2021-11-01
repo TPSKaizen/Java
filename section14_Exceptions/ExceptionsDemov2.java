@@ -15,6 +15,7 @@ public class ExceptionsDemov2 {
 
 	private static void share() throws FileNotFoundException { 
 		System.out.println("\nInside share...");
+		
 
 		try {
 			String response = creatingNewExceptions_BestPractices.send(1, "hello", "http://www.goodsnips.com");
@@ -28,7 +29,7 @@ public class ExceptionsDemov2 {
 			
 			System.out.println("Connecting to a different server");
 		} catch (APIFormatChangeException e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			
 			//Item 63: Include failure-capture information in detail messages 
 			/*

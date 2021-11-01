@@ -33,6 +33,19 @@ public class APIParser {
 			 *  
 			 *  And the constructor in the APIFormatChangeException won't follow the throwable format. So exclude the throwable param
 			 */
+			
+			/*
+			 * If the exception class doens't have a chaining  constructor, but there is a way around this.
+			 * 
+			 * The constructor would take the normal params, without throwable
+			 * 
+			 * Then, we do : 
+			 * 
+			 * APIFormatChangeException e1 = new APIFormatChangeException(response, "code", partner);
+			 * e1.initCause(e);
+			 * throw e1; 
+			 * 
+			 */
 		}
 		return responseCode;
 	} //New exceptions MUST extend one of the exception classes
