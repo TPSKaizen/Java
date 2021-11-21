@@ -1,0 +1,266 @@
+1. Creation of entities
+
+Six entities were created in total : User, Book, Movie, Weblink, Bookmark, UserBookmark.
+
+The user entity contains a tag field called UserType because the different users such as Editor, Staff and Chief Editor
+do not differ really in terms of function and properties.
+
+However, different classes were made for bookmark, such as Book, Movie and Weblink because there is difference in function and
+properties.
+
+UserBookmark was created to maintain the relationship between User and Bookmark meaning if a User bookmarks a particular bookmark, then 
+that info is stored in this class. Only has two variables : private User user and private Bookmark bookmark.
+===========================
+
+2. Creation of manager classes : Business Logic : Includes code to instantiate Objects. These methods will be used by the datastore class.
+	
+	Manager/Service classes are stateless and hence use singleton design pattern for access outside of the class.
+	
+	e.g private static ObjectName instance = new ObjectName();
+		private ObjectName () {} 
+		public static ObjectName getInstance(){
+			return instance;
+		}
+	
+===========================
+
+3. Defining constant exporting class (To be replaced later by Enums)
+	a. UserType
+	b. Gender 
+	c. BookGenre
+	d. MovieGenre
+	
+
+===========================
+
+4. Implementing Datastore // Represents a database with data
+	a. Storing information for Users : 5 initially
+	b. Holding bookmark information : Needs to be a 2d array : To hold the type and then the information. [3][5]. 3 types, 5 bookmarks per type
+	c. UserBookmark. Would hold 25 spaces since 5 users can hold 5 bookmarks each
+	
+	private static userBookmarkIndex;
+	
+A method is needed for loading the data.
+	e.g public static void loadData() {
+		 loadUsers();
+		 loadWeblinks();
+		 loadBooks();
+		 LoadMovies();
+	}
+	
+	private static void loadUsers(){
+		//data store logic
+		E.g Hard coding values or reading from a file
+	}
+	
+	private static void loadWeblinks(){
+		//data store logic
+		E.g Hard coding values or reading from a file
+	}
+	
+	private static void loadBooks(){
+		//data store logic
+		E.g Hard coding values or reading from a file
+	}
+	
+	private static void loadMovies(){
+		//data store logic
+		E.g Hard coding values or reading from a file
+	}
+	
+	//get Methods are needed so other classes can access the loaded data
+	
+	public static User[] getUsers(){
+		return users;
+	}
+	
+	public static Bookmark[][] getBookmarks(){
+		return bookmarks
+	}
+
+===========================
+
+5. Implementing DAO Layer : IRL Would represent SQL queries : I.E Getting Data from database
+	DAO for now will use the getter methods since we don't have an actual database yet.
+	
+	a. UserDao
+	b. BookmarkDao
+	
+	UserDao : 
+	Will include getUsers method and utilize the getUsers in the DataStore class.
+		e.g public User[] getUsers(){
+			return DataStore.getUsers(); //SQL Query IRL would go here
+		}
+		
+	BookmarkDao : 
+		public Bookmark[][] getBookmarks(){
+			return DataStore.getBookmarks();
+		}
+	
+5b. Now, inside the MANAGER class we will invoke the Dao methods. 
+	The MANAGER methods will be invoked by the Controller class.
+	
+	e.g (In the Manager)
+	
+	Create an instance of the User Dao or call the singleton pattern.
+	
+	E.g with created instance.
+	
+	private static UserDao user = new UserDao();
+	
+	public User[] getUsers(){
+		return users.getUsers();
+	} //relaying the call that exists in the DAO 
+	
+	//Same thinking will be done for the Bookmark manager 
+	
+	E.g inside Bookmark Manager 
+		private static BookmarkDao bookmarkdao = new BookmarkDao();
+		
+		public Bookmark[][] getBookmarks(){
+			return bookmarkdao.getBookmarks();
+		}
+		
+===========================
+6.
+At this point we have implemented : Model (Managers, Dao), DB(DataStore) and Entities 
+We still have to implement : View and Controller
+
+Apart from this, we need a launcher program
+
+Launcher Program: 
+1. Loads all the data 
+2.  
+3.
+	
+	Step 1: Loading the Data 
+	
+	In the main method of this class, we call a method called loadData().
+	Hence, we have to create a private static method named loadData() which calls the loadData method from the DataStore.
+	E.g 
+		private static loadData(){
+			DataStore.loadData();
+		}
+		
+	Step 2: Getting the data. 
+	
+	After the data is loaded, we need to store it locally somewhere in the launcher program. 
+	So, we create two stores : One for the Users and One for the bookmarks.
+	E.g 
+		private static User[] users;
+		private static Bookmark[][] bookmarks;
+		
+	(Within the class loadData function)
+	users = UserManager.getInstance().getUsers();
+	bookmarks = BookmarkManager.getInstance().getBookmarks();
+	
+	Step 3: Print the Data. 
+	
+	For this step we utilize for each loops.
+	E.g 
+		for(User user : users){
+			System.out.println(user)
+		}
+		
+		for(Bookmark[] bookmarkList : bookmarks) { //Because we have 3 types of bookmarks which can hold 5 individual bookmarks of their type
+			for(Bookmark bookmark : bookmarkList) {
+				System.out.println(bookmark)
+		}
+		
+	}
+	
+	Step 4: Override the toString method in the entity classes so the data is printed properly
+	
+===========================
+7. Implementing User Bookmarking feature 
+
+We will implement the View class, which would represent the UI in the web browser.
+So each method would represent an action that the user takes in the web browser
+and the methods here would be executed in the Launcher program.
+
+We also need to implement a controller class for bookmarks
+
+E.g public class BookmarkController {
+
+	private static BookmarkController instance = new BookmarkController();
+	private BookmarkController () {}
+	
+	public static BookmarkController getInstance(){
+		return instance;
+	}
+	
+	private static saveBookmark(User user, Bookmark bookmark){
+		BookmarkManager.getInstance().saveBookmark(user, bookmark)
+	}
+	
+	//then in the Manager class 
+	private static
+
+}
+
+	Step 1: 
+		(Inside the view class, create a method for bookmarking, which would be called in the main method E.g:
+		
+		private static void startBookmarking(){
+			for(Users user : users)
+			View.bookmark(user, bookmarks);
+		}
+
+	Step 2 : Creating Bookmarking Method //assumption, the user is provided with all the bookmarks
+	
+		public static void bookmark(User user, Bookmark[][] bookmarks){
+		System.out.println("\n" + user.getEmail() + " is bookmarking")
+			for(int i = 0; i < USER_BOOKMARK_LIMIT; i++){ 
+				int typeOffSet = Math.random() * DataStore.BOOKMARK_TYPES_COUNT;
+				int bookmarkOffSet = Math.random() * DataStore.BOOKMARK_COUNT_PER_TYPE;
+				
+				Bookmark bookmark = bookmarks[typeOffSet][bookmarkOffSet];
+				
+				
+				//At this point, the user would have selected a bookmark to be bookmarked and we have 
+				to pass this data to the controller. Then from Controller to the service layer, then to dao, then to datastore
+				
+				//After creation of controller, invoke it with a method to save the bookmark.
+				
+				E.g BookmarkController.getInstance().saveUserBookmark(user, bookmark)
+			}
+		}
+		
+	Step 2b.
+		Creating Controller class 
+		E.g BookmarkController (Will be by singleton pattern)
+		
+		//Methods : saveUserBookmark(User user, Bookmark bookmark){
+			BookmarkManager.getInstance().saveUserBookmark(user, bookmark)
+		} 
+		
+		//The above method will then be created in the BookManager class which holds the business logic.
+		
+		So we have to save the association between bookmark and user with the UserBookmark class 
+			e.g UserBookmark userBookmark = new UserBookmark();
+			
+			userBookmark.setUser(user);
+			userBookmark.setBookmark(bookmark);
+			
+			//Pass this bookmark object to the Dao Layer. 
+			
+			dao.saveUserBookmark(userBookmark) 
+			
+			//Implement this method in the dao
+			
+			(in the Dao)
+			DataStore.saveUserBookmark(UserBookmark userBookMark){
+				//save passed userbookmark obj into userbookmark store 
+				
+				userBookmark[userBookmarkIndex] = userBookMark;
+				userBookmarkIndex++;
+			}
+		
+		
+		
+		
+	
+
+	
+			
+
