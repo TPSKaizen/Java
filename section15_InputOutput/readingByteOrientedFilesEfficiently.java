@@ -36,7 +36,7 @@ public class readingByteOrientedFilesEfficiently {
 	 *  E.g : 
 	 *  
 	 *  Decorator Pattern: 
-	 *  BufferedInputStream in = new BufferedInputStream( new FileInputStream("go.jpg"));
+	 *  BufferedInputStream in = new BufferedInputStream(new FileInputStream("go.jpg"));
 	 *  
 	 *  BufferedInputStream has a constructor that takes an InputStream object, thus any sublcass can also go in here.
 	 */
